@@ -1,0 +1,65 @@
+{
+  "_args": [
+    [
+      "videogular-angulartics",
+      "/Users/joshua.ledbetter/Desktop/Personal_Code/MEAN_starter-app"
+    ]
+  ],
+  "_from": "videogular-angulartics@latest",
+  "_id": "videogular-angulartics@1.4.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/videogular-angulartics",
+  "_nodeVersion": "4.2.2",
+  "_npmUser": {
+    "email": "elecash@gmail.com",
+    "name": "elecash"
+  },
+  "_npmVersion": "3.3.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "videogular-angulartics",
+    "raw": "videogular-angulartics",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/videogular-angulartics/-/videogular-angulartics-1.4.1.tgz",
+  "_shasum": "6b6406f1f1ac68c026d0ed33eee833b367ed1a76",
+  "_shrinkwrap": null,
+  "_spec": "videogular-angulartics",
+  "_where": "/Users/joshua.ledbetter/Desktop/Personal_Code/MEAN_starter-app",
+  "dependencies": {},
+  "description": "bower-videogular-analytics ==========================",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-release": "~0.7.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "6b6406f1f1ac68c026d0ed33eee833b367ed1a76",
+    "tarball": "https://registry.npmjs.org/videogular-angulartics/-/videogular-angulartics-1.4.1.tgz"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "gitHead": "b1ed9a051f01b727dec3a846868c52deee005844",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "elecash",
+      "email": "elecash@gmail.com"
+    }
+  ],
+  "name": "videogular-angulartics",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "version": "1.4.1"
+}

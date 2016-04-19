@@ -1,0 +1,22 @@
+{
+  "name": "starter-node-angular",
+  "main": "server.js",
+  "dependencies": {
+    "angular-carousel": "^1.0.1",
+    "angular-contentful": "^2.0.0",
+    "angular-sanitize": "^1.5.5",
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "method-override": "~2.0.2",
+    "mongoose": "~3.8.0",
+    "videogular": "^1.4.1",
+    "videogular-angulartics": "^1.4.1",
+    "videogular-buffering": "^1.4.1",
+    "videogular-controls": "^1.4.1",
+    "videogular-dash": "^1.4.1",
+    "videogular-ima-ads": "^1.4.1",
+    "videogular-overlay-play": "^1.4.1",
+    "videogular-poster": "^1.4.1",
+    "videogular-themes-default": "^1.4.1"
+  }
+}

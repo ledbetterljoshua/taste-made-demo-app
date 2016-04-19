@@ -1,0 +1,24 @@
+<style type="text/css">
+body.ng-scope {
+    overflow: hidden;
+}
+</style>
+
+<div id="morphsearch" class="morphsearch open">
+	<form class="morphsearch-form">
+		<input class="morphsearch-input" ng-model="searchText" ng-change="searchAll(searchText)" type="search" ng-model-options="{debounce: 1000}" placeholder="Search..."/>
+		<button class="morphsearch-submit" type="submit">Search</button>
+	</form>
+	<div class="morphsearch-content">
+		<div class="search-column" contentful-entries>
+			<h2>People</h2>
+			<a ng-repeat="result in SearchResponse" class="dummy-media-object" href="http://twitter.com/SaraSoueidan">
+				<img class="round" src="{{result.fields.heroImage.fields.file.url}}"/>
+				<h3>{{result.fields.title}}</h3>
+			</a>
+		</div>
+	</div><!-- /morphsearch-content -->
+	<a ng-click="goBack()">
+		<span class="morphsearch-close"></span>
+	</a>
+</div><!-- /morphsearch -->

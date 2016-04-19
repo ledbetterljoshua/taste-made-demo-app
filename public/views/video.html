@@ -1,0 +1,71 @@
+<style type="text/css">
+.main-video-window {
+    max-width: 70%;
+}
+</style>
+
+<div class="container" style="margin-top: 12px;">
+	<div class="row">
+		<div layout="row" layout-xs="column">
+			<div class="main-video-window">
+				<div class="videogular-container" style="padding:0px;">
+					<videogular vg-theme="videoData.config.theme">
+						<vg-media vg-src="videoData.config.sources"
+								  vg-tracks="videoData.config.tracks">
+						</vg-media>
+
+						<vg-controls>
+							<vg-play-pause-button></vg-play-pause-button>
+							<vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+							<vg-scrub-bar>
+								<vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+							</vg-scrub-bar>
+							<vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+							<vg-volume>
+								<vg-mute-button></vg-mute-button>
+								<vg-volume-bar></vg-volume-bar>
+							</vg-volume>
+							<vg-fullscreen-button></vg-fullscreen-button>
+						</vg-controls>
+
+						<vg-overlay-play></vg-overlay-play>
+						<vg-poster vg-url='videoData.config.plugins.poster'></vg-poster>
+					</videogular>
+				</div>
+				<div class="videogular-container video description">
+					<h1>{{video.fields.recipeJSON[0].name}}</h1>
+					<a href="/#/profile/{{video.fields.author.fields.slug}}">{{video.fields.author.fields.name}}</a> -- 
+					<p style="padding: 30px 0;display: inline-block;">{{video.fields.description}}</p>
+				</div>
+				<div class="videogular-container video description">
+					<h3>What you will need:</h3> <br>
+					<ul>
+						<li ng-repeat="ingredient in video.fields.recipeJSON[0].ingredients track by $index">{{ingredient}}</li>
+					</ul>
+					<br>
+					<h3>Lets get started:</h3> <br>
+
+					<ol>
+						<li style="padding:7px 0;" ng-repeat="step in video.fields.recipeJSON[0].steps track by $index">{{step}}</li>
+					</ol>
+				</div>
+			</div>
+			<div flex>
+		    	<md-content style="margin-left: 20px;box-shadow: 0 0 1px 1px #ECECEC;margin-top: 10px">
+			      <md-list flex>
+			        <md-subheader class="md-no-sticky">Related</md-subheader>
+			        <md-list-item class="md-3-line" ng-repeat="recipe in recipes.items | limitTo:15"
+			         ng-click="goTo(recipe.fields.slug)">
+			          <img style="width: 50px;height: 50px;min-width: 50px;min-height: 50px;max-width: 50px;max-height: 50px;" ng-src="{{recipe.fields.landscapeThumbnail.fields.file.url}}" class="md-avatar"/>
+			          <div class="md-list-item-text" layout="column">
+			            <h3> {{recipe.fields.recipeJSON[0].name}} </h3>
+			            <h4> {{recipe.fields.description}} </h4>
+			            <p> {{recipe.fields.deliveryDate | date}}  </p>
+			          </div>
+			        </md-list-item>
+			      </md-list>
+			    </md-content>
+			</div>
+		</div>
+		<div layout="row" layout-xs="column"></div>
+</div>

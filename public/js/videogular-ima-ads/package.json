@@ -1,0 +1,63 @@
+{
+  "_args": [
+    [
+      "videogular-ima-ads",
+      "/Users/joshua.ledbetter/Desktop/Personal_Code/MEAN_starter-app"
+    ]
+  ],
+  "_from": "videogular-ima-ads@latest",
+  "_id": "videogular-ima-ads@1.4.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/videogular-ima-ads",
+  "_nodeVersion": "4.2.2",
+  "_npmUser": {
+    "email": "elecash@gmail.com",
+    "name": "elecash"
+  },
+  "_npmVersion": "3.3.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "videogular-ima-ads",
+    "raw": "videogular-ima-ads",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/videogular-ima-ads/-/videogular-ima-ads-1.4.1.tgz",
+  "_shasum": "dbdb0d63296cad987951c8164ef59c7489fb2566",
+  "_shrinkwrap": null,
+  "_spec": "videogular-ima-ads",
+  "_where": "/Users/joshua.ledbetter/Desktop/Personal_Code/MEAN_starter-app",
+  "dependencies": {},
+  "description": "bower-videogular-ima-ads ========================",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-release": "~0.7.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "dbdb0d63296cad987951c8164ef59c7489fb2566",
+    "tarball": "https://registry.npmjs.org/videogular-ima-ads/-/videogular-ima-ads-1.4.1.tgz"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "gitHead": "f90d2a296813c2cf6c94c78705b5eff1dfd4b765",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "elecash",
+      "email": "elecash@gmail.com"
+    }
+  ],
+  "name": "videogular-ima-ads",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {},
+  "version": "1.4.1"
+}

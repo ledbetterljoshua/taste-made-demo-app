@@ -1,0 +1,98 @@
+<link rel="stylesheet" type="text/css" href="../css/profile.css">
+<div class="qx" style="height: 380px;
+    background-size: cover; background-attachment: fixed; background-position: center top; background-image: url({{userData.fields.landscapeHeroImage.fields.file.url || userData.fields.squareThumbnailImage.fields.file.url}});"></div>
+<div class="profile amt">
+  <div class="profileg">
+    <div class="profilegn">
+      <div class="qv rc aog alu">
+        <div style="
+          height: 120px;
+          background-size: cover;
+          background-attachment: fixed;
+          background-image: url({{userData.fields.landscapeHeroImage.fields.file.url || userData.fields.squareThumbnailImage.fields.file.url}});
+          position: absolute;
+          -webkit-filter: blur(25px);
+          width: 100%;
+          height:100%;
+          background-position: center top;
+      "></div>
+        <div class="qw dj">
+          <a href="profile/index.html">
+            <img class="aoh" ng-src="{{userData.fields.squareThumbnailImage.fields.file.url}}">
+          </a>
+
+          <h5 class="qy">
+            <a class="aku" href="profile/index.html">{{userData.fields.name}}</a>
+          </h5>
+
+          <ul class="aoi">
+            <li class="aoj">
+              <a href="#userModal" class="aku" data-toggle="modal">
+                Friends
+                <h5 class="ali">12M</h5>
+              </a>
+            </li>
+
+            <li class="aoj">
+              <a href="#userModal" class="aku" data-toggle="modal">
+                Enemies
+                <h5 class="ali">1</h5>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="qv rc sm sp">
+        <div class="qw">
+          <h5 class="ald">About {{userData.fields.name}}</h5>
+          <ul class="eb tb">
+            <li >
+              {{userData.fields.bio}}
+          </li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="gz">
+      <ul class="ca qo anx">
+
+        <li class="qf b aml">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Message">
+            <div class="fj">
+              <button type="button" class="cg fm">
+                <span class="h xi"></span>
+              </button>
+            </div>
+          </div>
+        </li>
+
+        <li class="qf b aml" ng-repeat="video in userVideos | orderBy: '-fields.deliveryDate'">
+          <a class="qj" href="#">
+            <img class="qh cu" src="{{userData.fields.squareThumbnailImage.fields.file.url}}">
+          </a>
+          <div class="qg">
+            <div class="qn">
+              <small class="eg dp">{{video.fields.deliveryDate | date}}</small>
+              <h5>{{userData.fields.name}}</h5>
+            </div>
+
+            <p>
+              {{video.fields.description}}
+            </p>
+
+            <div class="any" data-grid="images">
+              <a href="#/v/{{video.fields.slug}}">
+                <div style="display: inline-block; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom; position:relative;">
+                  <span class="imageStillPlaceHolder"></span>
+                  <img src="{{video.fields.landscapeAsset.fields.awsStill}}">
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
