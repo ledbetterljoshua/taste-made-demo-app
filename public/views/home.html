@@ -45,7 +45,19 @@
 					          <div flex layout="row">
 					          	<md-content flex id="content" class="today swiper-container">
 					          	<div class="grid">
-					          		<ks-swiper-container initial-slide="0" loop="false" show-nav-buttons="true" slides-per-view="6" space-between="0" pagination-clickable="true">
+					          		<ks-swiper-container ng-if="detectmob() == false" initial-slide="0" loop="false" show-nav-buttons="true" slides-per-view="6" space-between="0" pagination-clickable="true">
+						          		<ks-swiper-slide class="swiper-slide" ng-repeat="hello in [1,2,3,4,5,6,7,8,9,10]">
+											<figure class="effect-ming swiper-slide">
+												<img src="http://lorempixel.com/250/350/food/{{hello}}" alt="img09"/>
+												<figcaption>
+													<h2>Funny <span>Ming</span></h2>
+													<p>Ming sits in the corner the whole day. She's into crochet.</p>
+													<a href="#">View more</a>
+												</figcaption>			
+											</figure>
+										</ks-swiper-slide>
+									</ks-swiper-container>
+									<ks-swiper-container ng-if="detectmob() == true" initial-slide="0" loop="false" show-nav-buttons="true" slides-per-view="2" space-between="0" pagination-clickable="true">
 						          		<ks-swiper-slide class="swiper-slide" ng-repeat="hello in [1,2,3,4,5,6,7,8,9,10]">
 											<figure class="effect-ming swiper-slide">
 												<img src="http://lorempixel.com/250/350/food/{{hello}}" alt="img09"/>
@@ -174,7 +186,27 @@
 <div class="conatinerBefore">
 		<div class="tasteMakers">
 			<div class="container"><h1>Our Taste Makers</h1></div>
-			<ks-swiper-container initial-slide="1" class="makerrid" loop="false" show-nav-buttons="false" slides-per-view="6" space-between="0" pagination-clickable="true">
+			<ks-swiper-container ng-if="!detectmob()" initial-slide="1" class="makerrid" loop="false" show-nav-buttons="false" slides-per-view="6" space-between="0" pagination-clickable="true">
+				<ks-swiper-slide class="swiper-slide" ng-repeat="author in authors.items" ng-if="author.fields.squareThumbnailImage">
+					<div class="maker swiper-slide">
+						<img src="{{author.fields.squareThumbnailImage.fields.file.url}}" alt="img09"/>
+						<!-- display none until hover -->
+						<div class="maker info">
+							<h4>{{author.fields.name}}</h4>
+							<p>{{author.fields.bio | cut:true:180:' ...'}}</p>
+						</div>	
+						<div class="more title">
+							<h4>{{author.fields.name}}</h4>
+						</div>		
+						<!-- display none until hover -->
+						<div class="more info">
+							<a ng-href="#profile/{{author.fields.slug}}">View Profile</a>
+						</div>	
+					</div>
+				</ks-swiper-slide>
+			</ks-swiper-container>
+
+			<ks-swiper-container ng-if="detectmob()" initial-slide="0" class="makerrid" loop="false" show-nav-buttons="true" slides-per-view="2" space-between="0" pagination-clickable="true">
 				<ks-swiper-slide class="swiper-slide" ng-repeat="author in authors.items" ng-if="author.fields.squareThumbnailImage">
 					<div class="maker swiper-slide">
 						<img src="{{author.fields.squareThumbnailImage.fields.file.url}}" alt="img09"/>
