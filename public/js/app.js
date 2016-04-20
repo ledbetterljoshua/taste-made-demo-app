@@ -7,6 +7,8 @@ angular.module('tasteMade', [
 	'appRoutes', 
 	'MainCtrl', 
 	'VideoCtrl', 
+	'ArticleCtrl',
+	'DiscoverCtrl',
 	'SearchCtrl', 
 	'ProfileCtrl', 
 	"ngSanitize",

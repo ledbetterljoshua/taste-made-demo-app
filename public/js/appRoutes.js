@@ -26,6 +26,14 @@
             templateUrl: 'views/video.html',
             controller: 'VideoController'
         })
+        .when('/b/:slug', {
+            templateUrl: 'views/article.html',
+            controller: 'ArticleController'
+        })
+        .when('/discover/', {
+            templateUrl: 'views/discover.html',
+            controller: 'DiscoverController'
+        })
         .otherwise({
             redirectTo: '/'
         });

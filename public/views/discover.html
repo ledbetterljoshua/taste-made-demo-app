@@ -1,0 +1,68 @@
+<style type="text/css">
+.discover {
+    display: block;
+    position: relative;
+    height: 100%;
+}
+.main {
+    position: relative;
+    display: block;
+    height: 50%;
+}
+.a {
+	position: relative;
+    display: block;
+}
+.img {
+    height: 440px;
+    background-size: cover;
+}
+.info {
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.17);
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid;
+}
+p.desc {
+    line-height: 22px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.99);
+    text-shadow: 1px 1px 1px #000;
+    max-height: 180px;
+    overflow: hidden;
+}
+.moreinfo {
+    position: absolute;
+    top: 60px;
+    left: 40px;
+    max-width: 400px;
+}
+span.title {
+    color: #fff;
+    font-size: 3em;
+    font-weight: 900;
+    text-shadow: 1px 1px 1px #000;
+    text-transform: uppercase;
+}
+</style>
+
+<div class="discover">
+
+	<div class="main">
+		<a ng-repeat="show in series.items" href="/#/s/{{show.fields.slug}}" class="a">
+			<div class="img" style="background-image:url({{show.fields.landscapeHeroImage.fields.file.url || show.fields.webHeroImage.fields.file.url}});">
+				<div class="info">
+					<span>{{show.fields.publishDate | date}}</span>
+				</div>
+				<div class="moreinfo">
+					<span class="title">{{show.fields.title}}</span>
+					<p class="desc">{{show.fields.description}}</p>
+				</div>
+			</div>
+		</a>
+	</div>
+
+</div>

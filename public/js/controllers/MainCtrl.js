@@ -143,6 +143,9 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, con
         return value + (tail || ' …');
     };
 })
+.filter("htmlify",   function() {
+
+})
 .filter("trustUrl", ['$sce', function ($sce) {
   return function (recordingUrl) {
       return $sce.trustAsResourceUrl(recordingUrl);

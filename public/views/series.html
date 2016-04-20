@@ -1,0 +1,20 @@
+<md-content layout-xs="column" layout="row" style="box-shadow: 0 0 1px 1px #ddd;
+">
+	<div class='md-padding' layout="row" layout-wrap>
+		<md-card style="width: 31.333%;" ng-repeat="result in SearchResponse">
+		    <img 
+		    ng-src="{{result.fields.heroImage.fields.file.url || result.fields.landscapeAsset.fields.awsStill}}" class="md-card-image" alt="{{result.fields.title}}">
+		    <md-card-title>
+		      <md-card-title-text>
+		      <a ng-if="result.fields.landscapeAsset.fields.awsStill" href="/#/v/{{result.fields.slug}}">
+		        <span class="md-headline" style="font-size: 15px;font-weight: 400;line-height: 22px;">{{result.fields.title}}</span>
+		      </a>	
+		      <a ng-if="!result.fields.landscapeAsset.fields.awsStill" href="/#/b/{{result.fields.slug}}">
+		        <span class="md-headline" style="font-size: 15px;font-weight: 400;line-height: 22px;">{{result.fields.title}}</span>
+		      </a>
+		        <span class="sm-headline" style="color: #8E8D8D;">{{result.fields.publishDate | date}}</span>
+		      </md-card-title-text>
+		    </md-card-title>
+		</md-card>
+	</div>
+</md-content>

@@ -1,40 +1,6 @@
 // public/js/controllers/NerdCtrl.js
 angular.module('VideoCtrl', []).controller('VideoController', function($scope, contentful, $routeParams, $sce) {
 	$scope.cssClass = 'view3';
-    //$scope.tagline = 'Nothing beats a pocket protector!';
-
- //    var getUsersVideos = function() {
-	// 	contentful.entries("content_type=author&fields.slug="+$scope.video.fields.author.fields.slug)
-	// 		.then(
-	// 		// Success handler
-	// 		function(response){
-	// 		  $scope.userData = response.data.items[0];
-	// 		  var userData = response.data.items[0];
-
-	// 		  contentful.entries("content_type=video&fields.author.sys.id="+userData.sys.id)
-	// 				.then(
-	// 				// Success handler
-	// 				function(response){
-	// 				  console.log(response.data);
-	// 				  $scope.userVideos = response.data.items;
-	// 				},
-
-	// 				// Error handler
-	// 				function(response){
-	// 				  return response.status;
-	// 				  console.log('Oops, error ' + response.status);
-	// 				}
-	// 			);
-
-	// 		},
-
-	// 		// Error handler
-	// 		function(response){
-	// 		  return response.status;
-	// 		  console.log('Oops, error ' + response.status);
-	// 		}
-	// 	);
-	// }
 
 	var getVideo = function() {
 		contentful.entries("content_type=video&fields.slug="+$routeParams.video)
