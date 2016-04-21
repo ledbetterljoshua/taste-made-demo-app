@@ -1,40 +1,39 @@
-<style type="text/css">
-body.ng-scope {
-    overflow: hidden;
-}
-</style>
+
 
 <div id="morphsearch" class="morphsearch open">
 	<form class="morphsearch-form">
-		<input class="morphsearch-input" ng-model="searchText" ng-change="searchAll(searchText)" type="search" ng-model-options="{debounce: 1000}" placeholder="Search..."/>
+		<input class="morphsearch-input" ng-model="searchText" ng-change="searchAll(searchText)" type="search" ng-model-options="{debounce: 500}" placeholder="Search..."/>
 		<button class="morphsearch-submit" type="submit">Search</button>
 	</form>
-	<div class="morphsearch-content">
-		<div class="search-column" contentful-entries>
-			<h2>Results</h2>
-			<md-content layout-xs="column" layout="row" style="box-shadow: 0 0 1px 1px #ddd;
-">
-    			<div class='md-padding' layout="row" layout-wrap>
-					<md-card style="width: 31.333%;" ng-repeat="result in SearchResponse">
-					    <img 
-					    ng-src="{{result.fields.heroImage.fields.file.url || result.fields.landscapeAsset.fields.awsStill}}" class="md-card-image" alt="{{result.fields.title}}">
-					    <md-card-title>
-					      <md-card-title-text>
-					      <a ng-if="result.fields.landscapeAsset.fields.awsStill" href="/#/v/{{result.fields.slug}}">
-					        <span class="md-headline" style="font-size: 15px;font-weight: 400;line-height: 22px;">{{result.fields.title}}</span>
-					      </a>	
-					      <a ng-if="!result.fields.landscapeAsset.fields.awsStill" href="/#/b/{{result.fields.slug}}">
-					        <span class="md-headline" style="font-size: 15px;font-weight: 400;line-height: 22px;">{{result.fields.title}}</span>
-					      </a>
-					        <span class="sm-headline" style="color: #8E8D8D;">{{result.fields.publishDate | date}}</span>
-					      </md-card-title-text>
-					    </md-card-title>
-					</md-card>
+	<div class="">
+		<div class="search-column1" contentful-entries>
+			<div class="container" style="margin-top: 12px;">
+				<div class="row">
+
+					<div flex>
+						<md-content style="margin-left: 20px;box-shadow: 0 0 1px 1px #ECECEC;margin-top: 10px">
+					      <md-list flex>
+					        <md-subheader class="md-no-sticky">Results</md-subheader>
+					        <md-list-item class="md-3-line" ng-repeat="result in SearchResponse | limitTo:15" 
+					         ng-click="goTo(result.fields.slug)">
+					          <img style="border: 2px solid #fff;box-shadow: 0 0 8px 1px #CCC;width: 110px;height: 110px;min-width: 110px;min-height: 110px;max-width: 110px;max-height: 110px;" ng-src="{{result.fields.landscapeThumbnail.fields.file.url}}" class="md-avatar"/>
+					          <div class="md-list-item-text" layout="column">
+					            <h3> {{result.fields.title}} </h3>
+					            <h4> {{result.fields.description}} </h4>
+					            <p> {{result.fields.deliveryDate | date}}  </p>
+					          </div>
+					        </md-list-item>
+					      </md-list>
+					    </md-content>
+					</div>
+
 				</div>
-			</md-content>
+			</div>
 		</div>
 	</div><!-- /morphsearch-content -->
 	<a ng-click="goBack()">
 		<span class="morphsearch-close"></span>
 	</a>
 </div><!-- /morphsearch -->
+
+

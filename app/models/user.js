@@ -27,6 +27,7 @@ var userSchema = mongoose.Schema({
 
     },
     following        : [{type: Schema.Types.ObjectId, ref: "Save"}], 
+    
     saved            : [{type: Schema.Types.ObjectId, ref: "Follow"}]
 
 });

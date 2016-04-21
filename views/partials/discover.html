@@ -52,7 +52,7 @@ span.title {
 <div class="discover">
 
 	<div class="main">
-		<a ng-repeat="show in series.items" href="/#/s/{{show.fields.slug}}" class="a">
+		<a ng-repeat="show in series.items" href="/#/d/{{show.sys.id}}" class="a">
 			<div class="img" style="background-image:url({{show.fields.landscapeHeroImage.fields.file.url || show.fields.webHeroImage.fields.file.url}});">
 				<div class="info">
 					<span>{{show.fields.publishDate | date}}</span>

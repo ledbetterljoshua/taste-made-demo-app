@@ -34,6 +34,14 @@
             templateUrl: '../partials/discover.html',
             controller: 'DiscoverController'
         })
+        .when('/d/:slug', {
+            templateUrl: '../partials/discover-list.html',
+            controller: 'DiscListController'
+        })
+        .when('/taste-makers', { 
+            templateUrl: '../partials/taste-makers.html',
+            controller: 'TasteMakersController'
+        })
         .otherwise({
             redirectTo: '/'
         });

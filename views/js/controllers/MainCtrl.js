@@ -53,7 +53,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, con
     }
 
   $scope.getAuthors = function() {
-    contentful.entries("content_type=author&limit=20&skip=40")
+    contentful.entries("content_type=author&limit=30&skip=40")
         .then(
         // Success handler
         function(response){

@@ -10,6 +10,8 @@ angular.module('tasteMade', [
 	'ArticleCtrl',
 	'DiscoverCtrl',
 	'SearchCtrl', 
+	"DiscListCtrl",
+	"TasteMakersCtrl",
 	'ProfileCtrl', 
 	"ngSanitize",
 	"com.2fdevs.videogular",

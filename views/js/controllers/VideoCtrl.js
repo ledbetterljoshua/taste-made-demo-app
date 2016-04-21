@@ -25,6 +25,22 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, c
 					}
 				};
 
+				contentful.entries("content_type=video&fields.author.sys.id="+$scope.video.fields.author.sys.id)
+					.then(
+					function(response){
+					  console.log(response.data);
+					  $scope.recipes = response.data;
+					  console.log("$scope.recipes!!!!!!!")
+					  console.log($scope.recipes)
+					},
+
+					// Error handler
+					function(response){
+					  return response.status;
+					  console.log('Oops, error ' + response.status);
+					}
+				);
+
 			},
 
 			// Error handler
