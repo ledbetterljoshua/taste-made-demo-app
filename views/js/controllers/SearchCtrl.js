@@ -22,4 +22,8 @@ angular.module('SearchCtrl', []).controller('SearchController', function($scope,
   	$scope.goBack = function() {
   		window.history.back()
   	}
+  	$scope.goTo = function(url) {
+  		window.location.href = "/#/v/"+url;
+  		console.log(url)
+  	}
 });

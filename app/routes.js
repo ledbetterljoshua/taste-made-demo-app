@@ -2,7 +2,7 @@
 module.exports = function(app, passport, router) {
 
 	var User  = require('./models/user');
-	var Saves = require('./models/save');
+	var Saved = require('./models/save');
 	var Follows = require('./models/follow');
 
     // =====================================
@@ -78,46 +78,75 @@ module.exports = function(app, passport, router) {
     // =====================================
     // All routes to be used for the API
 
+    router.route('/user')
+    .get(function(req, res, next) {
+        if (req.isAuthenticated()) {
+            User.findById(req.user._id, function(err, user) {
+              console.log(req.user._id)
+              if (err) throw err;
+              res.json(user)
+            });
+        } else {
+            res.send(404)
+        }
+    });
+
     router.route('/saved')
     .get(function(req, res, next) {
-
-        Saved.find({ user: req.params.user_id }).exec(function(err, saves) {
-          if (err) throw err;
-          res.json(saves)
-        });
+        if (req.isAuthenticated()) {
+            Saved.find({ user: req.user._id }).exec(function(err, saves) {
+              if (err) throw err;
+              res.json(saves)
+            });
+        } else {
+            res.send(404)
+        }
     })
     .post(function(req, res, next) {
-        var save = new Saved();
-        save.saved = req.body;
-        save.user = req.user.facebook.id;
-        console.log("req.body.name: " + req.body)
-        console.log("req.body.user: " + req.user.facebook.id)
-        follow.save(function(err) {
-            if (err) 
-               res.send(err);
+        if (req.isAuthenticated()) {
+            var save = new Saved();
+            save.saved = req.body;
+            save.user = req.user._id;
+            console.log("req.body.name: " + req.body)
+            console.log("req.body.user: " + req.user._id)
+            follow.save(function(err) {
+                if (err) 
+                   res.send(err);
 
-            res.json({ message: 'follow saved!' });
-        });
+                res.json({ message: 'follow saved!' });
+            });
+        } else {
+            res.send(404)
+        }
     });
     router.route('/following')
     .get(function(req, res, next) {
-        Follows.find({ user: req.params.user_id }).exec(function(err, follows) {
-          if (err) throw err;
-          res.json(follows)
-        });
+        if (req.isAuthenticated()) {
+            Follows.find({ user: req.user._id }).exec(function(err, follows) {
+              if (err) throw err;
+              res.json(follows)
+            });
+        } else {
+            res.send(404)
+        }
     })
     .post(function(req, res, next) {
-        var follow = new Follows();
-        follow.following = req.body;
-        follow.user = req.user.facebook.id;
-        console.log("req.body.name: " + req.body)
-        console.log("req.body.user: " + req.user.facebook.id)
-        follow.save(function(err) {
-            if (err) 
-               res.send(err);
+        if (req.isAuthenticated()) {
+            var follow = new Follows();
+            follow.following = req.body;
+            follow.user = req.user._id;
+            console.log(req.body)
+            console.log("req.body.user: " + req.user._id)
+            follow.save(function(err) {
+                if (err) 
+                   res.send(err);
 
-            res.json({ message: 'follow saved!' });
-        });
+                res.json({ message: 'follow saved!' });
+            });
+        }
+        else {
+            res.send(404)
+        }
     });
 
 };

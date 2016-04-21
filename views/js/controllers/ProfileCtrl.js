@@ -1,5 +1,5 @@
 // public/js/controllers/NerdCtrl.js
-angular.module('ProfileCtrl', []).controller('ProfileController', function($scope, contentful, $routeParams) {
+angular.module('ProfileCtrl', []).controller('ProfileController', function($scope, contentful, $routeParams, $http) {
 	$scope.cssClass = 'view3';
     //$scope.tagline = 'Nothing beats a pocket protector!';
 
@@ -36,6 +36,29 @@ angular.module('ProfileCtrl', []).controller('ProfileController', function($scop
 			}
 		);
 	}
+
+	$scope.followUser = function(slug) {
+		contentful.entries("content_type=author&fields.slug="+slug)
+			.then(
+			// Success handler
+			function(response){
+			  var userData = response.data.items[0];
+			  $http.post('/api/following', userData).success(function(response){
+					console.log('follow saved')
+					console.log(userData)
+					console.log(response)
+					//$scope.post = {url: parenturl}
+				});
+			},
+
+			// Error handler
+			function(response){
+			  return response.status;
+			  console.log('Oops, error ' + response.status);
+			}
+		);
+	}
+
 	getUserVideos();
     //&content_type=author&fields.slug=marcus-meacham
 

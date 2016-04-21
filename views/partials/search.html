@@ -14,9 +14,8 @@
 						<md-content style="margin-left: 20px;box-shadow: 0 0 1px 1px #ECECEC;margin-top: 10px">
 					      <md-list flex>
 					        <md-subheader class="md-no-sticky">Results</md-subheader>
-					        <md-list-item class="md-3-line" ng-repeat="result in SearchResponse | limitTo:15" 
-					         ng-click="goTo(result.fields.slug)">
-					          <img style="border: 2px solid #fff;box-shadow: 0 0 8px 1px #CCC;width: 110px;height: 110px;min-width: 110px;min-height: 110px;max-width: 110px;max-height: 110px;" ng-src="{{result.fields.landscapeThumbnail.fields.file.url}}" class="md-avatar"/>
+					        <md-list-item class="md-3-line" ng-repeat="result in SearchResponse | limitTo:25" ng-click="goTo(result.fields.slug)">
+					          <img style="border: 2px solid #fff;box-shadow: 0 0 8px 1px #CCC;width: 110px;height: 110px;min-width: 110px;min-height: 110px;max-width: 110px;max-height: 110px;" ng-src="{{result.fields.landscapeThumbnail.fields.file.url || result.fields.heroImage.fields.file.url}}" class="md-avatar"/>
 					          <div class="md-list-item-text" layout="column">
 					            <h3> {{result.fields.title}} </h3>
 					            <h4> {{result.fields.description}} </h4>
