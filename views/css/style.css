@@ -510,6 +510,9 @@ section {
     margin-left: -130px;
     margin-right: -130px;
 }
+.main-video-window {
+	max-height: 473px;
+}
 .menu-mid {
  -moz-column-width: 18em;
  -webkit-column-width: 18em;
