@@ -65,6 +65,7 @@ angular.module('ProfileCtrl', []).controller('ProfileController', function($scop
 					console.log('follow saved')
 					console.log(userData)
 					console.log(response)
+					$scope.alreadyFollowed = true;
 					$mdToast.show(
 			            $mdToast.simple()
 			              .textContent('Followed!')

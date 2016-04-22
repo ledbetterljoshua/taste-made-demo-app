@@ -248,10 +248,7 @@ img {
 a.md-default-theme:not(.md-button), a:not(.md-button) {
     color: rgb(255, 0, 87);
 }
-.aku, .aku:hover, .aku:focus {
-    color: inherit;
-    text-decoration: inherit;
-}
+
 a {
     background-color: transparent;
 }

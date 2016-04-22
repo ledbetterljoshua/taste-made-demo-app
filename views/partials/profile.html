@@ -26,12 +26,12 @@
 
           <ul class="aoi">
             <li class="aoj">
-              <p ng-if="!alreadyFollowed" ng-click="followUser(userData.fields.slug)" class="aku" data-toggle="modal">
+              <md-button ng-if="!alreadyFollowed" ng-click="followUser(userData.fields.slug)" class="aku" data-toggle="modal">
                 Follow 
-              </a>
-              <p ng-if="alreadyFollowed" class="aku" data-toggle="modal">
+              </md-button>
+              <md-button ng-disabled="true" ng-if="alreadyFollowed" class="aku" data-toggle="modal">
                 Following
-              </a>
+              </md-button>
             </li>
           </ul>
         </div>

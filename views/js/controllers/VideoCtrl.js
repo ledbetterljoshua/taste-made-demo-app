@@ -31,7 +31,7 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 					  console.log(response.data);
 					  $scope.recipes = response.data;
 					  console.log("$scope.recipes!!!!!!!")
-					  console.log($scope.recipes)
+					  console.log($scope.recipes);
 					},
 
 					// Error handler
@@ -50,7 +50,6 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 			}
 		);
 	}
-
 	$scope.alreadySaved = false;
 	$scope.ifSaved = function() {
 		$http.get('/api/saved').success(function(response){
@@ -81,6 +80,7 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 			console.log('video saved')
 			console.log($scope.video)
 			console.log(response)
+			$scope.alreadySaved = true;
 			$mdToast.show(
 	            $mdToast.simple()
 	              .textContent('The video has been saved')
