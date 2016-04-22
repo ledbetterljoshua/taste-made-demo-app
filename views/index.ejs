@@ -54,7 +54,7 @@
 </head>
 <style type="text/css">
 ._md-toast-animating {
-overflow: auto !important;
+    overflow: auto !important;
 }
 </style>
 <body ng-app="tasteMade" ng-controller="MainController">
@@ -73,12 +73,11 @@ overflow: auto !important;
         <ul class="nav navbar-nav left">
             <li><a href="#search">Search</a></li>
             <li><a href="#discover">Discover</a></li>
-            <li><a ng-click="checkUser()">My TasteMade</a></li>
+            <li><a ng-click="checkUser()" style="cursor:pointer;">My TasteMade</a></li>
         </ul>
         <ul class="nav navbar-nav right">
             <li><a href="#discover">shows</a></li>
             <li><a href="#taste-makers">tastemakers</a></li>
-            <li><a href="#profile">Recipes</a></li>
             <li><a href="/auth/facebook">Login</a></li>
         </ul>
         <md-button ng-click="openLeftMenu()"

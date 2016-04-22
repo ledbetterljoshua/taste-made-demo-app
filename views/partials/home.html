@@ -37,91 +37,28 @@
 		<div class="row">
 			<div class="content today">
 				<h1>Today on Tastemade</h1>
-				<div ng-cloak>
-  					<md-content>
-					    <md-tabs md-dynamic-height md-border-bottom>
-					      <md-tab label="TODAY ON TASTEMADE">
-					        <md-content style="padding:0;">
-					          <div flex layout="row">
-					          	<md-content flex id="content" class="today swiper-container">
-					          	<div class="grid">
-					          		<ks-swiper-container ng-if="detectmob() == false" initial-slide="0" loop="false" show-nav-buttons="true" slides-per-view="6" space-between="0" pagination-clickable="true">
-						          		<ks-swiper-slide class="swiper-slide" ng-repeat="hello in [1,2,3,4,5,6,7,8,9,10]">
-											<figure class="effect-ming swiper-slide">
-												<img src="http://lorempixel.com/250/350/food/{{hello}}" alt="img09"/>
-												<figcaption>
-													<h2>Funny <span>Ming</span></h2>
-													<p>Ming sits in the corner the whole day. She's into crochet.</p>
-													<a href="#">View more</a>
-												</figcaption>			
-											</figure>
-										</ks-swiper-slide>
-									</ks-swiper-container>
-									<ks-swiper-container ng-if="detectmob() == true" initial-slide="0" loop="false" show-nav-buttons="true" slides-per-view="2" space-between="0" pagination-clickable="true">
-						          		<ks-swiper-slide class="swiper-slide" ng-repeat="hello in [1,2,3,4,5,6,7,8,9,10]">
-											<figure class="effect-ming swiper-slide">
-												<img src="http://lorempixel.com/250/350/food/{{hello}}" alt="img09"/>
-												<figcaption>
-													<h2>Funny <span>Ming</span></h2>
-													<p>Ming sits in the corner the whole day. She's into crochet.</p>
-													<a href="#">View more</a>
-												</figcaption>			
-											</figure>
-										</ks-swiper-slide>
-									</ks-swiper-container>
-								</div>
-							    </md-content>
-			
-					          </div>
-					        </md-content>
-					      </md-tab>
-					      <md-tab label="RECENT RECIPES">
-					        <md-content>
-					          <div class="grid">
-					          		<ks-swiper-container initial-slide="0" loop="false" show-nav-buttons="true" slides-per-view="5" space-between="0" pagination-clickable="true">
-						          		<ks-swiper-slide class="swiper-slide" ng-repeat="hello in [1,2,3,4,5,6,7,8,9,10]">
-											<figure class="effect-ming swiper-slide">
-												<img src="http://lorempixel.com/300/400/food/{{hello}}" alt="img09"/>
-												<figcaption>
-													<h2>Recent <span>Ming</span></h2>
-													<p>Ming sits in the corner the whole day. She's into crochet.</p>
-													<a href="#">View more</a>
-												</figcaption>			
-											</figure>
-										</ks-swiper-slide>
-									</ks-swiper-container>
-								</div>
-					        </md-content>
-					      </md-tab>
-					      <md-tab label="PLUS">
-					        <md-content>
-					          <div class="grid">
-					          		<ks-swiper-container initial-slide="0" loop="false" show-nav-buttons="true" slides-per-view="5" space-between="0" pagination-clickable="true">
-						          		<ks-swiper-slide class="swiper-slide" ng-repeat="hello in [1,2,3,4,5,6,7,8,9,10]">
-											<figure class="effect-ming swiper-slide">
-												<img src="http://lorempixel.com/300/400/food/{{hello}}" alt="img09"/>
-												<figcaption>
-													<h2>Recent <span>Ming</span></h2>
-													<p>Ming sits in the corner the whole day. She's into crochet.</p>
-													<a href="#">View more</a>
-												</figcaption>			
-											</figure>
-										</ks-swiper-slide>
-									</ks-swiper-container>
-								</div>
-					        </md-content>
-					      </md-tab>
-					    </md-tabs>
-					  </md-content>
-					</div>
+				<div class="menu-mid">
+				    <div class="menu-category list-group" ng-repeat="recipe in recipesSlide.items | limitTo:15" ng-if="recipe.fields.landscapeThumbnail.fields.file.url || recipe.fields.landscapeAsset.fields.file.url">
+				    	<a href="/#/v/{{recipe.fields.slug}}">
+				    	<img src="{{recipe.fields.landscapeThumbnail.fields.file.url || recipe.fields.landscapeAsset.fields.file.url}}" />
+				        <div class="menu-category-name list-group-item">
+				        	{{recipe.fields.recipeJSON[0].name || recipe.fields.title}}
+				        </div>
+				        </a>
+				        <div class="menu-category-name list-group-item">
+				        	<p>{{recipe.fields.description}}</p>
+				        </div>
+				    </div>
+				</div>
 			</div>
+		
 			<div class="recipe">
 				<div layout="row" layout-xs="column">
 				  <div flex>
 				    <md-content>
 				      <md-list flex>
 				        <md-subheader class="md-no-sticky">Our most recent recipes</md-subheader>
-				        <md-list-item class="md-3-line" ng-repeat="recipe in recipes.items | limitTo:6"
+				        <md-list-item class="md-3-line" ng-repeat="recipe in recipes.items | limitTo:7"
 				        ng-if="recipe.fields.recipeJSON" ng-click="updateMiddle(recipe.fields.slug)">
 				          <img style="width: 50px;height: 50px;min-width: 50px;min-height: 50px;max-width: 50px;max-height: 50px;" ng-src="{{recipe.fields.landscapeThumbnail.fields.file.url}}" class="md-avatar"/>
 				          <div class="md-list-item-text" layout="column">
@@ -174,7 +111,6 @@
 				        </md-card-content>
 				        <md-card-actions layout="row" layout-align="end center">
 				          <md-button><a href="/#/v/{{middleRecipe.items[0].fields.slug}}">View Full Recipe</a></md-button>
-				          <md-button>Save</md-button>
 				        </md-card-actions>
 				      </md-card>
 				  </div>

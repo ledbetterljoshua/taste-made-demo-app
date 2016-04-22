@@ -90,6 +90,12 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 			//$scope.post = {url: parenturl}
 		}).error(function(error) {
 			console.log(error)
+			$mdToast.show(
+	            $mdToast.simple()
+	              .textContent('You need to log in..')
+	              .position("top right")
+	              .hideDelay(3000)
+	          );
 		});
 	}
 	getVideo();

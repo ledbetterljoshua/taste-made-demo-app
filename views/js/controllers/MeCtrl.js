@@ -1,7 +1,7 @@
 // public/js/controllers/NerdCtrl.js
 angular.module('MeCtrl', []).controller('MeController', function($scope, $http, $mdToast, contentful) {
 	$scope.cssClass = 'view2';
-
+  
 	$scope.getFollowing = function() {
 	    $http.get('/api/following').success(function(response) {
 

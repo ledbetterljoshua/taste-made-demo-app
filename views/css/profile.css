@@ -207,10 +207,6 @@ ul.eb.tb {
     position: relative;
     background: rgba(255, 255, 255, 0.5);
 }
-a.md-default-theme:not(.md-button), a:not(.md-button) {
-    color: rgb(255, 0, 87) !important;
-}
-
 .aoh {
     max-width: 100px;
     /* margin-top: -70px; */
@@ -414,4 +410,11 @@ img {
       padding-left: 0 !important;
       padding-right: 0 !important;
   }
+}
+a.md-default-theme:not(.md-button):hover, a:not(.md-button):hover {
+     color: #23527c;
+     text-decoration: none;
+}
+a.md-default-theme:not(.md-button), a:not(.md-button) {
+     color: #337ab7; 
 }

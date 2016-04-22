@@ -32,30 +32,20 @@
             </p>
           </div>
         </li>
-        <li class="qf b aml" ng-repeat="video in savedContent">
-          <a class="qj" href="/#/profile/{{video.saved[0].fields.author.fields.slug}}">
-            <img class="qh cu" src="{{video.saved[0].fields.author.fields.squareThumbnailImage.fields.file.url}}">
-          </a>
-          <div class="qg">
-            <div class="qn">
-              <small class="eg dp">{{video.saved[0].fields.deliveryDate | date}}</small>
-              <h5>{{userData.fields.name}}</h5>
-            </div>
-
-            <p>
-              {{video.saved[0].fields.description}}
-            </p>
-
-            <div class="any" data-grid="images">
+        <div class="menu-mid">
+            <div class="menu-category list-group" ng-repeat="video in savedContent">
               <a href="#/v/{{video.saved[0].fields.slug}}">
-                <div style="display: inline-block; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom; position:relative;">
-                  <span class="imageStillPlaceHolder"></span>
-                  <img ng-src="{{video.saved[0].fields.landscapeAsset.fields.awsStill}}">
+              <img src="{{video.saved[0].fields.landscapeAsset.fields.awsStill}}" />
+                <div class="menu-category-name list-group-item">
+                  {{video.saved[0].fields.title}} 
                 </div>
-              </a>
+                </a>
+                <div class="menu-category-name list-group-item">
+                  {{video.saved[0].fields.deliveryDate | date}} <br>
+                  <p>{{video.saved[0].fields.description}}</p>
+                </div>
             </div>
-          </div>
-        </li>
+        </div>
       </ul>
     </div>
   </div>

@@ -74,6 +74,24 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, con
     window.scrollTo(1,0);
   }
 
+  $scope.getRecipesSlide = function() {
+    contentful.entries("content_type=video&limit=50&skip=20")
+        .then(
+        // Success handler
+        function(response){
+          $scope.recipesSlide = response.data;
+          console.log(response.data);
+        },
+
+        // Error handler
+        function(response){
+          return response.status;
+          console.log('Oops, error ' + response.status);
+        }
+      );
+  }
+  $scope.getRecipesSlide();
+
   $scope.getRecipes = function() {
     contentful.entries("content_type=video&limit=50&skip=0")
         .then(
@@ -107,32 +125,6 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, con
       return false;
     });
   }
-  $scope.contains = function(needle) {
-      // Per spec, the way to identify NaN is that it is not equal to itself
-      var findNaN = needle !== needle;
-      var indexOf;
-
-      if(!findNaN && typeof Array.prototype.indexOf === 'function') {
-          indexOf = Array.prototype.indexOf;
-      } else {
-          indexOf = function(needle) {
-              var i = -1, index = -1;
-
-              for(i = 0; i < this.length; i++) {
-                  var item = this[i];
-
-                  if((findNaN && item !== item) || item === needle) {
-                      index = i;
-                      break;
-                  }
-              }
-
-              return index;
-          };
-      }
-
-      return indexOf.call(this, needle) > -1;
-  };
   $scope.updateMiddle = function(slug){
     $scope.recipeMiddle = 
     contentful.entries("content_type=video&fields.slug="+slug)
