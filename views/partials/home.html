@@ -10,156 +10,156 @@
 }
 .bg-img:before {
     content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-image: linear-gradient(to bottom right,#000000,rgba(255, 255, 255, 0));
-	opacity: .6; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right,#000000,rgba(255, 255, 255, 0));
+    opacity: .6; 
 }
 </style>
 
 <!-- Container #4 -->
 <div>
-	<header class="jumbotron bg-inverse text-xs-center center-vertically" role="banner">
-	  <div class="container">
-	    <h1 class="display-3">TasteMade
-	    </h1>
-	    <h2 class="m-b-3">Conecting the World, 
-	      <em>Through Video
-	      </em>
-	    </h2>
-	  </div>
-	</header>
+    <header class="jumbotron bg-inverse text-xs-center center-vertically" role="banner">
+      <div class="container">
+        <h1 class="display-3">TasteMade
+        </h1>
+        <h2 class="m-b-3">Conecting the World, 
+          <em>Through Video
+          </em>
+        </h2>
+      </div>
+    </header>
 
-	<div class="container">
-		<div class="row">
-			<div class="content today">
-				<h1>Today on Tastemade</h1>
-				<div class="menu-mid">
-				    <div class="menu-category list-group" ng-repeat="recipe in recipesSlide.items | limitTo:15" ng-if="recipe.fields.landscapeThumbnail.fields.file.url || recipe.fields.landscapeAsset.fields.file.url">
-				    	<a href="/#/v/{{recipe.fields.slug}}">
-				    	<img src="{{recipe.fields.landscapeThumbnail.fields.file.url || recipe.fields.landscapeAsset.fields.file.url}}" />
-				        <div class="menu-category-name list-group-item">
-				        	{{recipe.fields.recipeJSON[0].name || recipe.fields.title}}
-				        </div>
-				        </a>
-				        <div class="menu-category-name list-group-item">
-				        	<p>{{recipe.fields.description}}</p>
-				        </div>
-				    </div>
-				</div>
-			</div>
-		
-			<div class="recipe">
-				<div layout="row" layout-xs="column">
-				  <div flex>
-				    <md-content>
-				      <md-list flex>
-				        <md-subheader class="md-no-sticky">Our most recent recipes</md-subheader>
-				        <md-list-item class="md-3-line" ng-repeat="recipe in recipes.items | limitTo:7"
-				        ng-if="recipe.fields.recipeJSON" ng-click="updateMiddle(recipe.fields.slug)">
-				          <img style="width: 50px;height: 50px;min-width: 50px;min-height: 50px;max-width: 50px;max-height: 50px;" ng-src="{{recipe.fields.landscapeThumbnail.fields.file.url}}" class="md-avatar"/>
-				          <div class="md-list-item-text" layout="column">
-				            <h3> {{recipe.fields.recipeJSON[0].name}} </h3>
-				            <h4> {{recipe.fields.description}} </h4>
-				            <p> {{recipe.fields.deliveryDate | date}}  </p>
-				          </div>
-				        </md-list-item>
-				      </md-list>
-				    </md-content>
-				  </div>
-				  <div flex>
-				    <md-card>
-				        <div class="videogular-container home">
-							<videogular vg-theme="videoRecipe.config.theme">
-								<vg-media vg-src="videoRecipe.config.sources"
-										  vg-tracks="videoRecipe.config.tracks">
-								</vg-media>
-								<vg-controls>
-									<vg-play-pause-button></vg-play-pause-button>
-									<vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
-									<vg-scrub-bar>
-										<vg-scrub-bar-current-time></vg-scrub-bar-current-time>
-									</vg-scrub-bar>
-									<vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
-									<vg-volume>
-										<vg-mute-button></vg-mute-button>
-										<vg-volume-bar></vg-volume-bar>
-									</vg-volume>
-									<vg-fullscreen-button></vg-fullscreen-button>
-								</vg-controls>
+    <div class="container">
+        <div class="row">
+            <div class="content today">
+                <h1>Today on Tastemade</h1>
+                <div class="menu-mid">
+                    <div class="menu-category list-group" ng-repeat="recipe in recipesSlide.items | limitTo:15" ng-if="recipe.fields.landscapeThumbnail.fields.file.url || recipe.fields.landscapeAsset.fields.file.url">
+                        <a href="/#/v/{{recipe.fields.slug}}">
+                        <img src="{{recipe.fields.landscapeThumbnail.fields.file.url || recipe.fields.landscapeAsset.fields.file.url}}" />
+                        <div class="menu-category-name list-group-item">
+                            {{recipe.fields.recipeJSON[0].name || recipe.fields.title}}
+                        </div>
+                        </a>
+                        <div class="menu-category-name list-group-item">
+                            <p>{{recipe.fields.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="recipe">
+                <div layout="row" layout-xs="column">
+                  <div flex>
+                    <md-content>
+                      <md-list flex>
+                        <md-subheader class="md-no-sticky">Our most recent recipes</md-subheader>
+                        <md-list-item class="md-3-line" ng-repeat="recipe in recipes.items | limitTo:7"
+                        ng-if="recipe.fields.recipeJSON" ng-click="updateMiddle(recipe.fields.slug)">
+                          <img style="width: 50px;height: 50px;min-width: 50px;min-height: 50px;max-width: 50px;max-height: 50px;" ng-src="{{recipe.fields.landscapeThumbnail.fields.file.url}}" class="md-avatar"/>
+                          <div class="md-list-item-text" layout="column">
+                            <h3> {{recipe.fields.recipeJSON[0].name}} </h3>
+                            <h4> {{recipe.fields.description}} </h4>
+                            <p> {{recipe.fields.deliveryDate | date}}  </p>
+                          </div>
+                        </md-list-item>
+                      </md-list>
+                    </md-content>
+                  </div>
+                  <div flex>
+                    <md-card>
+                        <div class="videogular-container home">
+                            <videogular vg-theme="videoRecipe.config.theme">
+                                <vg-media vg-src="videoRecipe.config.sources"
+                                          vg-tracks="videoRecipe.config.tracks">
+                                </vg-media>
+                                <vg-controls>
+                                    <vg-play-pause-button></vg-play-pause-button>
+                                    <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+                                    <vg-scrub-bar>
+                                        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                                    </vg-scrub-bar>
+                                    <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+                                    <vg-volume>
+                                        <vg-mute-button></vg-mute-button>
+                                        <vg-volume-bar></vg-volume-bar>
+                                    </vg-volume>
+                                    <vg-fullscreen-button></vg-fullscreen-button>
+                                </vg-controls>
 
-								<vg-overlay-play></vg-overlay-play>
-								<vg-poster vg-url='videoRecipe.config.plugins.poster'></vg-poster>
-							</videogular>
-						</div>
-				        <md-card-title>
-				          <md-card-title-text>
-				            <span class="md-headline">{{middleRecipe.items[0].fields.title}}</span>
-				            <a href="/#/profile/{{middleRecipe.items[0].fields.author.fields.slug}}">
-				            <span class="sm-headline">{{middleRecipe.items[0].fields.author.fields.name}}</span>
-				        	</a>
-				          </md-card-title-text>
-				        </md-card-title>
-				        <md-card-content>
-				          <p>{{middleRecipe.items[0].fields.description}}</p>
-				          <ol>
-				          	<li ng-repeat="item in middleRecipe.items[0].fields.recipeJSON[0].steps"> {{item}} </li>
-				          </ol>
-				        </md-card-content>
-				        <md-card-actions layout="row" layout-align="end center">
-				          <md-button><a href="/#/v/{{middleRecipe.items[0].fields.slug}}">View Full Recipe</a></md-button>
-				        </md-card-actions>
-				      </md-card>
-				  </div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                <vg-overlay-play></vg-overlay-play>
+                                <vg-poster vg-url='videoRecipe.config.plugins.poster'></vg-poster>
+                            </videogular>
+                        </div>
+                        <md-card-title>
+                          <md-card-title-text>
+                            <span class="md-headline">{{middleRecipe.items[0].fields.title}}</span>
+                            <a href="/#/profile/{{middleRecipe.items[0].fields.author.fields.slug}}">
+                            <span class="sm-headline">{{middleRecipe.items[0].fields.author.fields.name}}</span>
+                            </a>
+                          </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                          <p>{{middleRecipe.items[0].fields.description}}</p>
+                          <ol>
+                            <li ng-repeat="item in middleRecipe.items[0].fields.recipeJSON[0].steps"> {{item}} </li>
+                          </ol>
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="end center">
+                          <md-button><a href="/#/v/{{middleRecipe.items[0].fields.slug}}">View Full Recipe</a></md-button>
+                        </md-card-actions>
+                      </md-card>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="conatinerBefore">
-		<div class="tasteMakers">
-			<div class="container"><h1>Our Taste Makers</h1></div>
-			<ks-swiper-container ng-if="!detectmob()" initial-slide="1" class="makerrid" loop="false" show-nav-buttons="false" slides-per-view="6" space-between="0" pagination-clickable="true">
-				<ks-swiper-slide class="swiper-slide" ng-repeat="author in authors.items" ng-if="author.fields.squareThumbnailImage">
-					<div class="maker swiper-slide">
-						<img src="{{author.fields.squareThumbnailImage.fields.file.url}}" alt="img09"/>
-						<!-- display none until hover -->
-						<div class="maker info">
-							<h4>{{author.fields.name}}</h4>
-							<p>{{author.fields.bio | cut:true:180:' ...'}}</p>
-						</div>	
-						<div class="more title">
-							<h4>{{author.fields.name}}</h4>
-						</div>		
-						<!-- display none until hover -->
-						<div class="more info">
-							<a ng-href="#profile/{{author.fields.slug}}">View Profile</a>
-						</div>	
-					</div>
-				</ks-swiper-slide>
-			</ks-swiper-container>
+        <div class="tasteMakers">
+            <div class="container"><h1>Our Taste Makers</h1></div>
+            <ks-swiper-container ng-if="!detectmob()" initial-slide="1" class="makerrid" loop="false" show-nav-buttons="false" slides-per-view="6" space-between="0" pagination-clickable="true">
+                <ks-swiper-slide class="swiper-slide" ng-repeat="author in authors.items" ng-if="author.fields.squareThumbnailImage">
+                    <div class="maker swiper-slide">
+                        <img src="{{author.fields.squareThumbnailImage.fields.file.url}}" alt="img09"/>
+                        <!-- display none until hover -->
+                        <div class="maker info">
+                            <h4>{{author.fields.name}}</h4>
+                            <p>{{author.fields.bio | cut:true:180:' ...'}}</p>
+                        </div>  
+                        <div class="more title">
+                            <h4>{{author.fields.name}}</h4>
+                        </div>      
+                        <!-- display none until hover -->
+                        <div class="more info">
+                            <a ng-href="#profile/{{author.fields.slug}}">View Profile</a>
+                        </div>  
+                    </div>
+                </ks-swiper-slide>
+            </ks-swiper-container>
 
-			<ks-swiper-container ng-if="detectmob()" initial-slide="0" class="makerrid" loop="false" show-nav-buttons="true" slides-per-view="2" space-between="0" pagination-clickable="true">
-				<ks-swiper-slide class="swiper-slide" ng-repeat="author in authors.items" ng-if="author.fields.squareThumbnailImage">
-					<div class="maker swiper-slide">
-						<img src="{{author.fields.squareThumbnailImage.fields.file.url}}" alt="img09"/>
-						<!-- display none until hover -->
-						<div class="maker info">
-							<h4>{{author.fields.name}}</h4>
-							<p>{{author.fields.bio | cut:true:180:' ...'}}</p>
-						</div>	
-						<div class="more title">
-							<h4>{{author.fields.name}}</h4>
-						</div>		
-						<!-- display none until hover -->
-						<div class="more info">
-							<a ng-href="#profile/{{author.fields.slug}}">View Profile</a>
-						</div>	
-					</div>
-				</ks-swiper-slide>
-			</ks-swiper-container>
-		</div>
-	</div>
+            <ks-swiper-container ng-if="detectmob()" initial-slide="0" class="makerrid" loop="false" show-nav-buttons="true" slides-per-view="2" space-between="0" pagination-clickable="true">
+                <ks-swiper-slide class="swiper-slide" ng-repeat="author in authors.items" ng-if="author.fields.squareThumbnailImage">
+                    <div class="maker swiper-slide">
+                        <img src="{{author.fields.squareThumbnailImage.fields.file.url}}" alt="img09"/>
+                        <!-- display none until hover -->
+                        <div class="maker info">
+                            <h4>{{author.fields.name}}</h4>
+                            <p>{{author.fields.bio | cut:true:180:' ...'}}</p>
+                        </div>  
+                        <div class="more title">
+                            <h4>{{author.fields.name}}</h4>
+                        </div>      
+                        <!-- display none until hover -->
+                        <div class="more info">
+                            <a ng-href="#profile/{{author.fields.slug}}">View Profile</a>
+                        </div>  
+                    </div>
+                </ks-swiper-slide>
+            </ks-swiper-container>
+        </div>
+    </div>

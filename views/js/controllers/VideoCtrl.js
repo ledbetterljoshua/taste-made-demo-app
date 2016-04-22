@@ -92,7 +92,7 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 			console.log(error)
 			$mdToast.show(
 	            $mdToast.simple()
-	              .textContent('You need to log in..')
+	              .textContent('You need to log in!!')
 	              .position("top right")
 	              .hideDelay(3000)
 	          );

@@ -520,7 +520,18 @@ section {
  -webkit-column-gap: 1em; 
   
 }
-
+.close-menu {
+	position: relative;
+    float: right;
+    top: 19px;
+    letter-spacing: 6px;
+    font-size: 35px;
+    transform: rotate(90deg);
+}
+.close-menu:hover {
+	background: transparent;
+	background-color: transparent !important;
+}
 .menu-category img {
 	max-width: 100%;
 }
@@ -1106,4 +1117,13 @@ a.md-default-theme:not(.md-button):hover, a:not(.md-button):hover {
 }
 a.md-default-theme:not(.md-button), a:not(.md-button) {
      color: #337ab7; 
+}
+md-sidenav ul {
+    display: block !important;
+    float: none !important;
+}
+md-sidenav ul li {
+	display: block !important;
+    float: none !important;
+    height: 60px;
 }

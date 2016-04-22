@@ -58,7 +58,18 @@
 }
 </style>
 <body ng-app="tasteMade" ng-controller="MainController">
-    <md-sidenav md-component-id="left" md-is-open="isSidenavOpen" class="md-sidenav-left"></md-sidenav>
+    <md-sidenav md-component-id="left" md-is-open="isSidenavOpen" class="md-sidenav-left">
+        <ul class="nav navbar-nav left">
+            <li><a href="#search">Search</a></li>
+            <li><a href="#discover">Discover</a></li>
+            <li><a ng-click="checkUser()" style="cursor:pointer;">My TasteMade</a></li>
+        </ul>
+        <ul class="nav navbar-nav right">
+            <li><a href="#discover">shows</a></li>
+            <li><a href="#taste-makers">tastemakers</a></li>
+            <li><a href="/auth/facebook">Login</a></li>
+        </ul>
+    </md-sidenav>
 <div class="mainContent">
 
     <!-- HEADER -->
@@ -81,8 +92,8 @@
             <li><a href="/auth/facebook">Login</a></li>
         </ul>
         <md-button ng-click="openLeftMenu()"
-            class="md-primary" hide-gt-md>
-            Toggle left
+            class="md-primary close-menu" hide-gt-sm>
+            |||
         </md-button>
     </nav>
 
