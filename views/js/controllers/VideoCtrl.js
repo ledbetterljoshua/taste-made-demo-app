@@ -1,5 +1,5 @@
 // public/js/controllers/NerdCtrl.js
-angular.module('VideoCtrl', []).controller('VideoController', function($scope, $http, contentful, $routeParams, $sce) {
+angular.module('VideoCtrl', []).controller('VideoController', function($scope, $http, contentful, $routeParams, $sce, $mdToast) {
 	$scope.cssClass = 'view3';
 
 	var getVideo = function() {
@@ -51,15 +51,42 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 		);
 	}
 
+	$scope.alreadySaved = false;
+	$scope.ifSaved = function() {
+		$http.get('/api/saved').success(function(response){
+			var videoSlug = $routeParams.video;
+			console.log("following");
+			console.log(response); 
+
+			for (i = 0; i < response.length; i++) {
+				if(response[i].saved[0].fields.slug == videoSlug) {
+					$scope.alreadySaved = true;
+					console.log(response[i].saved[0].fields.slug)
+				} 
+			}
+			console.log($scope.alreadySaved);
+		}).error(function(err) {
+			console.log(err)
+		});
+	}
+	$scope.ifSaved();
+
   	$scope.goTo = function(url) {
   		window.location.href = "/#/v/"+url;
   	}
+
   	$scope.save_content = function(slug) {
   	  console.log($scope.video)
 	  $http.post('/api/saved', $scope.video).success(function(response){
 			console.log('video saved')
 			console.log($scope.video)
 			console.log(response)
+			$mdToast.show(
+	            $mdToast.simple()
+	              .textContent('The video has been saved')
+	              .position("top right")
+	              .hideDelay(3000)
+	          );
 			//$scope.post = {url: parenturl}
 		}).error(function(error) {
 			console.log(error)

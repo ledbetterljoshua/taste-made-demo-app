@@ -1,5 +1,5 @@
 // public/js/controllers/MainCtrl.js
-angular.module('MainCtrl', []).controller('MainController', function($scope, contentful, $timeout, $mdSidenav, $log, $sce) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, contentful, $timeout, $mdSidenav, $log, $sce, $mdToast, $http) {
   var deQuery;
 
   $scope.classhidden = "hidden";
@@ -93,6 +93,46 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, con
   }
   $scope.getRecipes();
 
+  $scope.checkUser = function() {
+    $http.get('/api/user').success(function() {
+      console.log("user is logged in");
+      window.location.href = "/#/me";
+    }).error(function(){
+      $mdToast.show(
+        $mdToast.simple()
+          .textContent('You need to log in!!')
+          .position("top right")
+          .hideDelay(3000)
+      );
+      return false;
+    });
+  }
+  $scope.contains = function(needle) {
+      // Per spec, the way to identify NaN is that it is not equal to itself
+      var findNaN = needle !== needle;
+      var indexOf;
+
+      if(!findNaN && typeof Array.prototype.indexOf === 'function') {
+          indexOf = Array.prototype.indexOf;
+      } else {
+          indexOf = function(needle) {
+              var i = -1, index = -1;
+
+              for(i = 0; i < this.length; i++) {
+                  var item = this[i];
+
+                  if((findNaN && item !== item) || item === needle) {
+                      index = i;
+                      break;
+                  }
+              }
+
+              return index;
+          };
+      }
+
+      return indexOf.call(this, needle) > -1;
+  };
   $scope.updateMiddle = function(slug){
     $scope.recipeMiddle = 
     contentful.entries("content_type=video&fields.slug="+slug)

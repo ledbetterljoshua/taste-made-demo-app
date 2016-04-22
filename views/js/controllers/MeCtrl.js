@@ -1,5 +1,5 @@
 // public/js/controllers/NerdCtrl.js
-angular.module('MeCtrl', []).controller('MeController', function($scope, $http, contentful) {
+angular.module('MeCtrl', []).controller('MeController', function($scope, $http, $mdToast, contentful) {
 	$scope.cssClass = 'view2';
 
 	$scope.getFollowing = function() {
@@ -29,9 +29,14 @@ angular.module('MeCtrl', []).controller('MeController', function($scope, $http, 
         console.log(response);
         $scope.loggedIn = true;
 
-      }).error(function(error){
-        console.log(error);
-        $scope.loggedIn = false;
+      }).error(function(){
+        $mdToast.show(
+            $mdToast.simple()
+              .textContent('You need to log in!!')
+              .position("top right")
+              .hideDelay(3000)
+          );
+          return false;
       });
   }
 	$scope.goToA = function(url) {

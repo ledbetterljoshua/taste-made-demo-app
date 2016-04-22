@@ -21,21 +21,16 @@
           </a>
 
           <h5 class="qy">
-            <a class="aku" href="profile/index.html">{{userData.fields.name}}</a>
+            {{userData.fields.name}}
           </h5>
 
           <ul class="aoi">
             <li class="aoj">
-              <a href="#userModal" class="aku" data-toggle="modal">
-                Followers
-                <h5 class="ali">12M</h5>
+              <p ng-if="!alreadyFollowed" ng-click="followUser(userData.fields.slug)" class="aku" data-toggle="modal">
+                Follow 
               </a>
-            </li>
-
-            <li class="aoj">
-              <a href="" ng-click="followUser(userData.fields.slug)" class="aku" data-toggle="modal">
-                Follow Me
-                <h5 class="ali">Please</h5>
+              <p ng-if="alreadyFollowed" class="aku" data-toggle="modal">
+                Following
               </a>
             </li>
           </ul>

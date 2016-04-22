@@ -33,7 +33,7 @@
           </div>
         </li>
         <li class="qf b aml" ng-repeat="video in savedContent">
-          <a class="qj" href="#">
+          <a class="qj" href="/#/profile/{{video.saved[0].fields.author.fields.slug}}">
             <img class="qh cu" src="{{video.saved[0].fields.author.fields.squareThumbnailImage.fields.file.url}}">
           </a>
           <div class="qg">

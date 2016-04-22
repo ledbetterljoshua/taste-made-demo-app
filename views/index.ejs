@@ -52,6 +52,11 @@
     <script src="./js/appRoutes.js"></script>
     <script src="./js/app.js"></script>
 </head>
+<style type="text/css">
+._md-toast-animating {
+overflow: auto !important;
+}
+</style>
 <body ng-app="tasteMade" ng-controller="MainController">
     <md-sidenav md-component-id="left" md-is-open="isSidenavOpen" class="md-sidenav-left"></md-sidenav>
 <div class="mainContent">
@@ -68,7 +73,7 @@
         <ul class="nav navbar-nav left">
             <li><a href="#search">Search</a></li>
             <li><a href="#discover">Discover</a></li>
-            <li><a href="#me">My TasteMade</a></li>
+            <li><a ng-click="checkUser()">My TasteMade</a></li>
         </ul>
         <ul class="nav navbar-nav right">
             <li><a href="#discover">shows</a></li>

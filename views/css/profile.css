@@ -353,6 +353,13 @@ small {
 .anx .any img, .anx .anz {
     max-width: 100%;
 }
+p.aku {
+    padding: 5px 13px;
+    border-radius: 4%;
+    border: 1px solid #D8D8D8;
+    color: #fff;
+    font-weight: 900;
+}
 img {
     vertical-align: middle;
 }
