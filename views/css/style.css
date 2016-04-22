@@ -1118,6 +1118,9 @@ a.md-default-theme:not(.md-button):hover, a:not(.md-button):hover {
 a.md-default-theme:not(.md-button), a:not(.md-button) {
      color: #337ab7; 
 }
+.navbar-header {
+    float: left;
+}
 md-sidenav ul {
     display: block !important;
     float: none !important;
