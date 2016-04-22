@@ -12,6 +12,7 @@ angular.module('tasteMade', [
 	'SearchCtrl', 
 	"DiscListCtrl",
 	"TasteMakersCtrl",
+	"MeCtrl",
 	'ProfileCtrl', 
 	"ngSanitize",
 	"com.2fdevs.videogular",

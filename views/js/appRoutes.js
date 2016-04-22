@@ -14,9 +14,9 @@
             templateUrl: '../partials/search.html',
             controller: 'SearchController'
         })
-        .when('/profile', {
-            templateUrl: '../partials/profile.html',
-            controller: 'ProfileController'
+        .when('/me', {
+            templateUrl: '../partials/me.html',
+            controller: 'MeController'
         })
         .when('/profile/:user', {
             templateUrl: '../partials/profile.html',

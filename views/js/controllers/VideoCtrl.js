@@ -1,5 +1,5 @@
 // public/js/controllers/NerdCtrl.js
-angular.module('VideoCtrl', []).controller('VideoController', function($scope, contentful, $routeParams, $sce) {
+angular.module('VideoCtrl', []).controller('VideoController', function($scope, $http, contentful, $routeParams, $sce) {
 	$scope.cssClass = 'view3';
 
 	var getVideo = function() {
@@ -54,6 +54,17 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, c
   	$scope.goTo = function(url) {
   		window.location.href = "/#/v/"+url;
   	}
+  	$scope.save_content = function(slug) {
+  	  console.log($scope.video)
+	  $http.post('/api/saved', $scope.video).success(function(response){
+			console.log('video saved')
+			console.log($scope.video)
+			console.log(response)
+			//$scope.post = {url: parenturl}
+		}).error(function(error) {
+			console.log(error)
+		});
+	}
 	getVideo();
 
 });

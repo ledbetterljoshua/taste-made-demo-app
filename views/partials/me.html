@@ -1,0 +1,62 @@
+<link rel="stylesheet" type="text/css" href="../css/profile.css">
+<style type="text/css">
+.view {
+  overflow: hidden;
+}
+</style>
+<div class="profile amt" style="min-height: 700px;">
+  <div class="profileg" style="margin-top: 70px;">
+    <div class="profilegn">
+      <div class="qv rc sm sp">
+        <div class="qw">
+          <h5 class="ald">Followed tastemakers {{userData.fields.name}}</h5>
+          <ul class="eb tb">
+            <li class="" ng-if="!following[0].following[0]">You are not following anyone!</li>
+            <li ng-repeat="user in following">
+              <a href="/#/profile/{{user.following[0].fields.slug}}">{{user.following[0].fields.name}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="gz">
+      <ul class="ca qo anx">
+        <li class="qf b aml" ng-if="!savedContent[0].saved[0]">
+          <div class="qg">
+            <div class="qn">
+              <h5>You do not have any saved content!</h5>
+            </div>
+            <p>
+              click <a href="/#/discover">here</a> to find some content that might be worth saving for later
+            </p>
+          </div>
+        </li>
+        <li class="qf b aml" ng-repeat="video in savedContent">
+          <a class="qj" href="#">
+            <img class="qh cu" src="{{video.saved[0].fields.author.fields.squareThumbnailImage.fields.file.url}}">
+          </a>
+          <div class="qg">
+            <div class="qn">
+              <small class="eg dp">{{video.saved[0].fields.deliveryDate | date}}</small>
+              <h5>{{userData.fields.name}}</h5>
+            </div>
+
+            <p>
+              {{video.saved[0].fields.description}}
+            </p>
+
+            <div class="any" data-grid="images">
+              <a href="#/v/{{video.saved[0].fields.slug}}">
+                <div style="display: inline-block; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom; position:relative;">
+                  <span class="imageStillPlaceHolder"></span>
+                  <img ng-src="{{video.saved[0].fields.landscapeAsset.fields.awsStill}}">
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -104,12 +104,12 @@ module.exports = function(app, passport, router) {
     })
     .post(function(req, res, next) {
         if (req.isAuthenticated()) {
-            var save = new Saved();
-            save.saved = req.body;
-            save.user = req.user._id;
+            var Save = new Saved();
+            Save.saved = req.body;
+            Save.user = req.user._id;
             console.log("req.body.name: " + req.body)
             console.log("req.body.user: " + req.user._id)
-            follow.save(function(err) {
+            Save.save(function(err) {
                 if (err) 
                    res.send(err);
 
@@ -135,7 +135,8 @@ module.exports = function(app, passport, router) {
             var follow = new Follows();
             follow.following = req.body;
             follow.user = req.user._id;
-            console.log(req.body)
+             console.log("req.body!!!!!!!!!");
+            console.log(req.body);
             console.log("req.body.user: " + req.user._id)
             follow.save(function(err) {
                 if (err) 
