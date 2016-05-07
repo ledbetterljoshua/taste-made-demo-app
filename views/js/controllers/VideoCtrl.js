@@ -1,18 +1,21 @@
 // public/js/controllers/NerdCtrl.js
-angular.module('VideoCtrl', []).controller('VideoController', function($scope, $http, contentful, $routeParams, $sce, $mdToast) {
+angular.module('VideoCtrl', []).controller('VideoController', function($scope, $location, $http, contentful, $routeParams, $sce, $mdToast) {
 	$scope.cssClass = 'view3';
+
+	$scope.hash = window.location.hash;
 
 	var info = {};
 	info.url = $routeParams.video;
 
 	$http.post("/api/pageview/"+$routeParams.video, info).success(function(res){
-			console.log(res);
-		}).error(function(err) {
-			console.log(err);
-		});
+		$scope.hash = window.location.hash;
+		console.log(res);
+	}).error(function(err) {
+		console.log(err);
+	});
 
 	$http.get("/api/pageview/"+$routeParams.video).success(function(res){
-
+		$scope.hash = window.location.hash;
 		var res = res[0];
 		info.id = res._id;
 		info.viewCount = res.viewCount + 1;
@@ -36,6 +39,7 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 			.then(
 			// Success handler
 			function(response){
+				$scope.hash = window.location.hash;
 			  	$scope.videoSrc = response.data.items[0].fields.landscapeAsset.fields.awsRenditions;
 			  	console.log(response.data.items[0]);
 			  	$scope.video = response.data.items[0];
@@ -61,6 +65,7 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 					  $scope.recipes = response.data;
 					  console.log("$scope.recipes!!!!!!!")
 					  console.log($scope.recipes);
+					  $scope.hash = window.location.hash;
 					},
 
 					// Error handler
@@ -101,6 +106,7 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 
   	$scope.goTo = function(url) {
   		window.location.href = "/#/v/"+url;
+  		$scope.hash = window.location.hash;
   	}
 
   	$scope.save_content = function(slug) {

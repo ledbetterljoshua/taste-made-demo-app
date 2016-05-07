@@ -1,6 +1,13 @@
 // public/js/controllers/MainCtrl.js
-angular.module('MainCtrl', []).controller('MainController', function($scope, contentful, $timeout, $mdSidenav, $log, $sce, $mdToast, $http) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $location, $rootScope, contentful, $timeout, $mdSidenav, $log, $sce, $mdToast, $http) {
   var deQuery;
+
+  $rootScope.$on("$locationChangeStart", function(event, next, current) { 
+    var url = next; 
+    $scope.hash = url.substring(url.indexOf('#')-1)
+    console.log($scope.hash)
+  });
+
 
   $scope.classhidden = "hidden";
   $scope.changeClass = function(){

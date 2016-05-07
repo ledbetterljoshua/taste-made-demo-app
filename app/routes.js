@@ -52,7 +52,7 @@ module.exports = function(app, passport, router) {
     // =====================================
     app.get('/logout', function(req, res) {
         req.logout();
-        res.redirect('back');
+        res.redirect(req.query.hash);
     });
 
     // =====================================
@@ -62,11 +62,12 @@ module.exports = function(app, passport, router) {
     app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 
     // handle the callback after facebook has authenticated the user
-    app.get('/auth/facebook/callback',
+    app.get('/auth/facebook/callback', function(req, res, passport){
         passport.authenticate('facebook', {
-            successRedirect : 'back',
+            successRedirect : '/#/'+req.query.hash,
             failureRedirect : '/login'
-        }));
+        });
+    });
 
     // =====================================
     // API ROUTES =====================
