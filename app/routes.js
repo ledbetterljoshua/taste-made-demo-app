@@ -52,7 +52,7 @@ module.exports = function(app, passport, router) {
     // =====================================
     app.get('/logout', function(req, res) {
         req.logout();
-        res.redirect('/');
+        res.redirect('back');
     });
 
     // =====================================
@@ -64,15 +64,9 @@ module.exports = function(app, passport, router) {
     // handle the callback after facebook has authenticated the user
     app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/',
+            successRedirect : 'back',
             failureRedirect : '/login'
         }));
-
-    // route for logging out
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
 
     // =====================================
     // API ROUTES =====================
@@ -174,7 +168,7 @@ module.exports = function(app, passport, router) {
     })
     .post(function(req, res, next) {
         if (req.body.id) {
-            
+
             Views.findByIdAndUpdate(req.body.id, { 
                 viewCount: req.body.viewCount
             }, 
