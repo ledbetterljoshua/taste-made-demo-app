@@ -3,7 +3,7 @@
     <div class='md-padding' layout="row" layout-wrap>
         <md-card style="width: 31.333%;" ng-repeat="result in SearchResponse">
             <img 
-            ng-src="{{result.fields.heroImage.fields.file.url || result.fields.landscapeAsset.fields.awsStill}}" class="md-card-image" alt="{{result.fields.title}}">
+            ng-src="{{result.fields.heroImage.fields.file.url || result.fields.landscapeAsset.fields.awsStill}}?w=115&h=115" class="md-card-image" alt="{{result.fields.title}}">
             <md-card-title>
               <md-card-title-text>
               <a ng-if="result.fields.landscapeAsset.fields.awsStill" href="/#/v/{{result.fields.slug}}">

@@ -17,7 +17,7 @@
       "></div>
         <div class="qw dj">
           <a href="profile/index.html">
-            <img class="aoh" ng-src="{{userData.fields.squareThumbnailImage.fields.file.url}}">
+            <img class="aoh" ng-src="{{userData.fields.squareThumbnailImage.fields.file.url}}?w=106&h=106">
           </a>
 
           <h5 class="qy">
@@ -53,7 +53,7 @@
 
         <li class="qf b aml" ng-repeat="video in userVideos | orderBy: '-fields.deliveryDate'">
           <a class="qj" href="#">
-            <img class="qh cu" src="{{userData.fields.squareThumbnailImage.fields.file.url}}">
+            <img class="qh cu" src="{{userData.fields.squareThumbnailImage.fields.file.url}}?w=60&h=60">
           </a>
           <div class="qg">
             <div class="qn">
@@ -69,7 +69,7 @@
               <a href="#/v/{{video.fields.slug}}">
                 <div style="display: inline-block; margin-bottom: 10px; margin-right: 0px; vertical-align: bottom; position:relative;">
                   <span class="imageStillPlaceHolder"></span>
-                  <img src="{{video.fields.landscapeAsset.fields.awsStill}}">
+                  <img src="{{video.fields.landscapeAsset.fields.awsStill}}?w=597&h=336">
                 </div>
               </a>
             </div>

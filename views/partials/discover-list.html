@@ -7,7 +7,7 @@
                 <md-subheader class="md-no-sticky">Episodes</md-subheader>
                 <md-list-item class="md-3-line" ng-repeat="seriesVideo in series.items | limitTo:15 | orderBy: '-fields.deliveryDate'"
                  ng-click="goTo(seriesVideo.fields.slug)">
-                  <img style="border: 2px solid #fff;box-shadow: 0 0 8px 1px #CCC;width: 110px;height: 110px;min-width: 110px;min-height: 110px;max-width: 110px;max-height: 110px;}" ng-src="{{seriesVideo.fields.landscapeThumbnail.fields.file.url}}" class="md-avatar"/>
+                  <img style="border: 2px solid #fff;box-shadow: 0 0 8px 1px #CCC;width: 110px;height: 110px;min-width: 110px;min-height: 110px;max-width: 110px;max-height: 110px;" ng-src="{{seriesVideo.fields.landscapeThumbnail.fields.file.url}}?w=115&h=115" class="md-avatar"/>
                   <div class="md-list-item-text" layout="column">
                     <h3> {{seriesVideo.fields.title}} </h3>
                     <h4> {{seriesVideo.fields.description}} </h4>

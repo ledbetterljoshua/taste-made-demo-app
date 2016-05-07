@@ -40,7 +40,7 @@
                 <div class="menu-mid">
                     <div class="menu-category list-group" ng-repeat="recipe in recipesSlide.items | limitTo:15" ng-if="recipe.fields.landscapeThumbnail.fields.file.url || recipe.fields.landscapeAsset.fields.file.url">
                         <a href="/#/v/{{recipe.fields.slug}}">
-                        <img src="{{recipe.fields.landscapeThumbnail.fields.file.url || recipe.fields.landscapeAsset.fields.file.url}}" />
+                        <img src="{{recipe.fields.landscapeThumbnail.fields.file.url || recipe.fields.landscapeAsset.fields.file.url}}?w=350&h=200" />
                         <div class="menu-category-name list-group-item">
                             {{recipe.fields.recipeJSON[0].name || recipe.fields.title}}
                         </div>
@@ -60,7 +60,7 @@
                         <md-subheader class="md-no-sticky">Our most recent recipes</md-subheader>
                         <md-list-item class="md-3-line" ng-repeat="recipe in recipes.items | limitTo:7"
                         ng-if="recipe.fields.recipeJSON" ng-click="updateMiddle(recipe.fields.slug)">
-                          <img style="width: 50px;height: 50px;min-width: 50px;min-height: 50px;max-width: 50px;max-height: 50px;" ng-src="{{recipe.fields.landscapeThumbnail.fields.file.url}}" class="md-avatar"/>
+                          <img style="width: 50px;height: 50px;min-width: 50px;min-height: 50px;max-width: 50px;max-height: 50px;" ng-src="{{recipe.fields.landscapeThumbnail.fields.file.url || 'http://www.gophercon.in/images/food/default-food-image.jpg'}}?w=100&h=100" class="md-avatar"/>
                           <div class="md-list-item-text" layout="column">
                             <h3> {{recipe.fields.recipeJSON[0].name}} </h3>
                             <h4> {{recipe.fields.description}} </h4>
@@ -125,7 +125,7 @@
             <ks-swiper-container ng-if="!detectmob()" initial-slide="1" class="makerrid" loop="false" show-nav-buttons="false" slides-per-view="6" space-between="0" pagination-clickable="true">
                 <ks-swiper-slide class="swiper-slide" ng-repeat="author in authors.items" ng-if="author.fields.squareThumbnailImage">
                     <div class="maker swiper-slide">
-                        <img src="{{author.fields.squareThumbnailImage.fields.file.url}}" alt="img09"/>
+                        <img src="{{author.fields.squareThumbnailImage.fields.file.url}}?w=250&h=250" alt="img09"/>
                         <!-- display none until hover -->
                         <div class="maker info">
                             <h4>{{author.fields.name}}</h4>
