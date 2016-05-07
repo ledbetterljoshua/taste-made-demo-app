@@ -89,7 +89,8 @@
         <ul class="nav navbar-nav right">
             <li><a href="#discover">shows</a></li>
             <li><a href="#taste-makers">tastemakers</a></li>
-            <li><a href="/auth/facebook">Login</a></li>
+            <li ng-if="!isLoggedIn"><a href="/auth/facebook">Login</a></li>
+            <li ng-if="isLoggedIn"><a href="/logout">Logout</a></li>
         </ul>
         <md-button ng-click="openLeftMenu()"
             class="md-primary close-menu" hide-gt-sm>

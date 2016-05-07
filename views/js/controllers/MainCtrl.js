@@ -115,7 +115,9 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, con
     $http.get('/api/user').success(function() {
       console.log("user is logged in");
       window.location.href = "/#/me";
+      $scope.isLoggedIn = true;
     }).error(function(){
+      $scope.isLoggedIn = false;
       $mdToast.show(
         $mdToast.simple()
           .textContent('You need to log in!!')
@@ -125,6 +127,10 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, con
       return false;
     });
   }
+  $http.get('/api/user').success(function() {
+      console.log("user is logged in");
+      $scope.isLoggedIn = true;
+  });
   $scope.updateMiddle = function(slug){
     $scope.recipeMiddle = 
     contentful.entries("content_type=video&fields.slug="+slug)
