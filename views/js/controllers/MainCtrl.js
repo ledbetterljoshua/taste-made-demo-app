@@ -110,13 +110,16 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, con
       );
   }
   $scope.getRecipes();
-
+  $http.get('/api/user').success(function() {
+      console.log("user is logged in");
+      $scope.isLoggedIn = true;
+  });
   $scope.checkUser = function() {
-    $http.get('/api/user').success(function() {
+    if($scope.isLoggedIn) {
       console.log("user is logged in");
       window.location.href = "/#/me";
       $scope.isLoggedIn = true;
-    }).error(function(){
+    } else {
       $scope.isLoggedIn = false;
       $mdToast.show(
         $mdToast.simple()
@@ -124,13 +127,8 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, con
           .position("top right")
           .hideDelay(3000)
       );
-      return false;
-    });
+    }
   }
-  $http.get('/api/user').success(function() {
-      console.log("user is logged in");
-      $scope.isLoggedIn = true;
-  });
   $scope.updateMiddle = function(slug){
     $scope.recipeMiddle = 
     contentful.entries("content_type=video&fields.slug="+slug)
