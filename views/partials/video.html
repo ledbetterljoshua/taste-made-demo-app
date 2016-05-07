@@ -7,7 +7,10 @@ div#footcnt {
 }
 .view {
     overflow-x: initial;
-    }
+}
+button.md-button {
+    color: #CC6262;
+}
 </style>
 
 <div class="container" style="margin-top: 12px;">
@@ -38,13 +41,24 @@ div#footcnt {
                         <vg-poster vg-url='videoData.config.plugins.poster'></vg-poster>
                     </videogular>
                 </div>
-                <div class="videogular-container video description">
-                    <h1 ng-if="video.fields.recipeJSON[0].name">{{video.fields.recipeJSON[0].name}}</h1>
-                    <a href="/#/profile/{{video.fields.author.fields.slug}}">{{video.fields.author.fields.name}}</a> 
-                    <p>{{views}} views</p>
-                    <p style="padding: 30px 0;display: inline-block;">{{video.fields.description}}</p>
-                    <md-button ng-if="!alreadySaved" ng-click="save_content(video.fields.slug)">Save</md-button>
-                    <md-button ng-if="alreadySaved" ng-disabled="true">Saved</md-button>
+                <div class="videogular-container video description" style="padding:0;">
+                    <md-card style="margin:0px;">
+                    <md-card-title style="padding: 6px 16px 1px;">
+                      <md-card-title-text style="flex: 2;">
+                        <span class="md-headline" ng-if="video.fields.recipeJSON[0].name">{{video.fields.recipeJSON[0].name}}</span>
+                        <a href="/#/profile/{{video.fields.author.fields.slug}}">{{video.fields.author.fields.name}}</a>
+                      </md-card-title-text>
+                      <md-card-title-text style="flex: 0.4;text-align: right;line-height: 36px;font-size: 16px;">
+                         <span class="md-views">{{views}} views</span>
+                      </md-card-title-text>
+                    </md-card-title>
+                    <md-card-actions layout="row" layout-align="end center">
+                      <md-button ng-if="!alreadySaved" ng-click="save_content(video.fields.slug)">Save Video</md-button>
+                      <md-button ng-if="alreadySaved" ng-disabled="true">Saved</md-button>
+                    </md-card-actions>
+                    <md-card-content style="box-shadow: 0px 1px 7px #EAE8E8;">
+                        <p>{{video.fields.description}}</p>
+                    </md-card-content>
                 </div>
                 <div class="videogular-container video description" ng-if="video.fields.recipeJSON[0].ingredients || video.fields.recipeJSON[0].steps">
                     <h3 ng-if="video.fields.recipeJSON[0].ingredients">What you will need:</h3> <br>
