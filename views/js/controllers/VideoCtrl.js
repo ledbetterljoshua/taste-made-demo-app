@@ -2,6 +2,35 @@
 angular.module('VideoCtrl', []).controller('VideoController', function($scope, $http, contentful, $routeParams, $sce, $mdToast) {
 	$scope.cssClass = 'view3';
 
+	var info = {};
+	info.url = $routeParams.video;
+
+	$http.post("/api/pageview/"+$routeParams.video, info).success(function(res){
+			console.log(res);
+		}).error(function(err) {
+			console.log(err);
+		});
+
+	$http.get("/api/pageview/"+$routeParams.video).success(function(res){
+
+		var res = res[0];
+		info.id = res._id;
+		info.viewCount = res.viewCount + 1;
+		console.log(info);
+		console.log(res);
+
+		$scope.views = info.viewCount;
+
+		$http.post("/api/pageview/"+$routeParams.video, info).success(function(res){
+			console.log(res);
+		}).error(function(err) {
+			console.log(err);
+		});
+
+	}).error(function(err){
+		console.log(err)
+	})
+
 	var getVideo = function() {
 		contentful.entries("content_type=video&fields.slug="+$routeParams.video)
 			.then(

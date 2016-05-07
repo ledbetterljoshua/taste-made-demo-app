@@ -4,6 +4,7 @@ module.exports = function(app, passport, router) {
 	var User  = require('./models/user');
 	var Saved = require('./models/save');
 	var Follows = require('./models/follow');
+    var Views = require('./models/pageViews')
 
     // =====================================
     // HOME PAGE (with login links) ========
@@ -149,7 +150,54 @@ module.exports = function(app, passport, router) {
             res.send(404)
         }
     });
+    router.route('/pageview')
+    .get(function(req, res, next) {
 
+        Views.find({}, function(err, urlViews) {
+            if (err) throw err;
+            
+            res.send(urlViews);
+            console.log(urlViews);
+        });
+        
+    });
+    router.route('/pageview/:url')
+    .get(function(req, res, next) {
+
+        Views.find({url: req.params.url}, function(err, urlViews) {
+            if (err) throw err;
+            
+            res.send(urlViews);
+            console.log(urlViews);
+        });
+        
+    })
+    .post(function(req, res, next) {
+        if (req.body.id) {
+            
+            Views.findByIdAndUpdate(req.body.id, { 
+                viewCount: req.body.viewCount
+            }, 
+            function(err, post) {
+                if (err) throw err;
+                
+                res.send('Success');
+            });
+        }
+        
+        else {
+           
+           var newUrl = Views({
+               url: req.body.url,
+               viewCount: 1,
+           });
+           newUrl.save(function(err) {
+               if (err) throw err;
+               res.send('Success');
+           });
+            
+        }
+    });
 };
 
 // route middleware to make sure a user is logged in

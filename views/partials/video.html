@@ -40,7 +40,8 @@ div#footcnt {
                 </div>
                 <div class="videogular-container video description">
                     <h1 ng-if="video.fields.recipeJSON[0].name">{{video.fields.recipeJSON[0].name}}</h1>
-                    <a href="/#/profile/{{video.fields.author.fields.slug}}">{{video.fields.author.fields.name}}</a> -- 
+                    <a href="/#/profile/{{video.fields.author.fields.slug}}">{{video.fields.author.fields.name}}</a> 
+                    <p>{{views}} views</p>
                     <p style="padding: 30px 0;display: inline-block;">{{video.fields.description}}</p>
                     <md-button ng-if="!alreadySaved" ng-click="save_content(video.fields.slug)">Save</md-button>
                     <md-button ng-if="alreadySaved" ng-disabled="true">Saved</md-button>
@@ -66,7 +67,7 @@ div#footcnt {
                      ng-click="goTo(recipe.fields.slug)">
                       <img style="width: 50px;height: 50px;min-width: 50px;min-height: 50px;max-width: 50px;max-height: 50px;" ng-src="{{recipe.fields.landscapeThumbnail.fields.file.url || 'http://www.gophercon.in/images/food/default-food-image.jpg'}}?w=50&h=50" class="md-avatar"/>
                       <div class="md-list-item-text" layout="column">
-                        <h3> {{recipe.fields.recipeJSON[0].name}} </h3>
+                        <h3> {{recipe.fields.recipeJSON[0].name}} </h3>                    
                         <h4> {{recipe.fields.description}} </h4>
                         <p> {{recipe.fields.deliveryDate | date}}  </p>
                       </div>
