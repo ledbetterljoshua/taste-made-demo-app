@@ -54,7 +54,6 @@ module.exports = function(app, passport, router) {
         req.logout();
         res.redirect(req.query.hash);
     });
-
     // =====================================
     // FACEBOOK ROUTES =====================
     // =====================================
@@ -62,12 +61,11 @@ module.exports = function(app, passport, router) {
     app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 
     // handle the callback after facebook has authenticated the user
-    app.get('/auth/facebook/callback', function(req, res, passport){
+    app.get('/auth/facebook/callback',
         passport.authenticate('facebook', {
-            successRedirect : '/#/'+req.query.hash,
+            successRedirect : 'back',
             failureRedirect : '/login'
-        });
-    });
+        }));
 
     // =====================================
     // API ROUTES =====================
