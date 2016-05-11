@@ -13,6 +13,7 @@ angular.module('tasteMade', [
 	"DiscListCtrl",
 	"TasteMakersCtrl",
 	"MeCtrl",
+	'ngMdIcons',
 	'ProfileCtrl', 
 	"ngSanitize",
 	"com.2fdevs.videogular",

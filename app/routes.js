@@ -76,7 +76,6 @@ module.exports = function(app, passport, router) {
     .get(function(req, res, next) {
         if (req.isAuthenticated()) {
             User.findById(req.user._id, function(err, user) {
-              console.log(req.user._id)
               if (err) throw err;
               res.json(user)
             });
@@ -101,8 +100,6 @@ module.exports = function(app, passport, router) {
             var Save = new Saved();
             Save.saved = req.body;
             Save.user = req.user._id;
-            console.log("req.body.name: " + req.body)
-            console.log("req.body.user: " + req.user._id)
             Save.save(function(err) {
                 if (err) 
                    res.send(err);
@@ -129,9 +126,6 @@ module.exports = function(app, passport, router) {
             var follow = new Follows();
             follow.following = req.body;
             follow.user = req.user._id;
-             console.log("req.body!!!!!!!!!");
-            console.log(req.body);
-            console.log("req.body.user: " + req.user._id)
             follow.save(function(err) {
                 if (err) 
                    res.send(err);
@@ -143,14 +137,14 @@ module.exports = function(app, passport, router) {
             res.send(404)
         }
     });
-    router.route('/pageview')
+
+    router.route('/pageview/delete/:id')
     .get(function(req, res, next) {
 
-        Views.find({}, function(err, urlViews) {
+        Views.remove({_id: req.params.id}, function(err, url) {
             if (err) throw err;
             
-            res.send(urlViews);
-            console.log(urlViews);
+            res.send({ message: url + ' Deleted' });
         });
         
     });
@@ -161,7 +155,6 @@ module.exports = function(app, passport, router) {
             if (err) throw err;
             
             res.send(urlViews);
-            console.log(urlViews);
         });
         
     })
@@ -180,13 +173,29 @@ module.exports = function(app, passport, router) {
         
         else {
            
-           var newUrl = Views({
-               url: req.body.url,
-               viewCount: 1,
-           });
-           newUrl.save(function(err) {
-               if (err) throw err;
-               res.send('Success');
+           Views.find({url: req.params.url}, function(err, response) {
+            if(!response[0]) {
+                console.log("error");
+                console.log(response[0]);
+                var newUrl = Views({
+                   url: req.body.url,
+                   viewCount: 1,
+                });
+                newUrl.save(function(err) {
+                   if (err) throw err;
+                   res.send('Success');
+                });
+            } else {
+                console.log("no error, it exists");
+                Views.findByIdAndUpdate(req.body.id, { 
+                    viewCount: req.body.viewCount
+                }, 
+                function(err, post) {
+                    if (err) throw err;
+                    
+                    res.send('Success');
+                });
+            }
            });
             
         }

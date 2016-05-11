@@ -54,7 +54,7 @@ angular.module('VideoCtrl', []).controller('VideoController', function($scope, $
 					autoPlay: true,
 					theme: "../../js/videogular-themes-default/videogular.css",
 					plugins: {
-						poster: response.data.items[0].fields.landscapeAsset.fields.awsStill
+						poster: response.data.items[0].fields.landscapeAsset.fields.awsStill + "?w=700&h=400"
 					}
 				};
 

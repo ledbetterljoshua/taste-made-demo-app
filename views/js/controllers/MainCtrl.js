@@ -8,6 +8,42 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $lo
     console.log($scope.hash)
   });
 
+  
+  
+
+  $scope.loginclicked = function() {
+    var view = document.getElementById("view");
+    var loginBox = document.getElementById("login-box");
+    var background = document.getElementById("login-background")
+    console.log('clicked')
+    view.className = "blur";
+    background.className = "login-background-show";
+    setTimeout(function(){
+      loginBox.className = "show";
+    }, 100)
+  }
+  $scope.loginBackgroundShow = function() {
+    var view = document.getElementById("view");
+    var loginBox = document.getElementById("login-box");
+    var background = document.getElementById("login-background")
+    view.className = "";
+    loginBox.className = "";
+    background.className = "";
+  } 
+
+  $scope.showAlt = function() {
+    var loginBoxCont = document.getElementById("login-box"); 
+    loginBoxCont = loginBoxCont.getElementsByClassName('container');
+    loginBoxCont[0].className = loginBoxCont[0].className + " active";
+  }
+  $scope.closeRegister = function() {
+    var loginBoxCont = document.getElementById("login-box"); 
+    loginBoxCont = loginBoxCont.getElementsByClassName('container');
+    loginBoxCont[0].className = "container";
+  }
+
+
+
 
   $scope.classhidden = "hidden";
   $scope.changeClass = function(){
